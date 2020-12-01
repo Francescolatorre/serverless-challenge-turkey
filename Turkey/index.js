@@ -18,7 +18,7 @@ module.exports = async function (context, req) {
     Roast time (in minutes) = 15 * lbs of turkey
     */
 
-    if (weight){
+    if (weight && !(isNaN(weight)) ){
         var weightNum = weight.valueOf ()
         if ( weightNum >= 1 && weightNum < 1001)
         {
@@ -48,7 +48,7 @@ module.exports = async function (context, req) {
     }
     else    {
         context.res = {
-            status: 400, /* Defaults to 200 */
+            status: 400, /* Defaults to 400 */
             body: "Please provide the turkey weight, numeric in lbs - at least 1 lbs"
         };
     }
